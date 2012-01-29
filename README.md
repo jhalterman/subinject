@@ -21,6 +21,12 @@ Get a named instance of something:
 
     val myThreadsafeService = Injector.instanceOf[MyService]("threadsafe")
 
+Make a class injectable:
+
+	class SomeClass extends Injectable {
+	  val someService = inject[SomeService]	
+	}
+
 Reset the Injector's internal modules (useful for testing)
 
     Injector.reset()
