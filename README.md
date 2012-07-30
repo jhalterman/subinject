@@ -6,30 +6,40 @@ A thread-safe dynamically configurable service locator that produces fully injec
 
 Register a module:
 
-    val module = new NewBindingModule({ m =>
-      m.bind[SomeService].toClass[SomeServiceImpl]
-      m.bind[SomeService].idBy('threadsafe).toClass[SomeServiceThreadsafeImpl]
-    }
+```scala
+val module = new NewBindingModule({ m =>
+  m.bind[SomeService].toClass[SomeServiceImpl]
+  m.bind[SomeService].idBy('threadsafe).toClass[SomeServiceThreadsafeImpl]
+}
 
-    Injector.registerModule(module)
+Injector.registerModule(module)
+```
 
 Get an instance of something:
 
-    val myService = Injector.instanceOf[MyService]
+```scala
+val myService = Injector.instanceOf[MyService]
+```
 
 Get a named instance of something:
 
-    val myThreadsafeService = Injector.instanceOf[MyService]("threadsafe")
+```scala
+val myThreadsafeService = Injector.instanceOf[MyService]("threadsafe")
+```
 
 Make a class injectable:
 
-	class SomeClass extends Injectable {
-	  val someService = inject[SomeService]	
-	}
+```scala
+class SomeClass extends Injectable {
+  val someService = inject[SomeService]	
+}
+```
 
 Reset the Injector's internal modules (useful for testing)
 
-    Injector.reset()
+```scala
+Injector.reset()
+```
 
 ## License
 
